@@ -12,6 +12,8 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,5 +47,38 @@ public class ElasticProductController {
         return ResponseEntity.ok(product);
 
     }
+
+    @GetMapping("/elastic/products/{id}/details")
+    public ResponseEntity<ElasticProduct> getProductById(@PathVariable String id) {
+        ElasticProduct product = service.getProductById(id);
+
+        if (product == null) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(product);
+    }
+
+    @PostMapping("/elastic/products/stock")
+    public ResponseEntity<List<ElasticProduct>> updateStock(@RequestBody CreateStockController[] request) {
+        List<ElasticProduct> product = service.updateStock(request);
+
+        if (product == null) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(product);
+    }
+
+    // @PatchMapping("/elastic/products/{id}/stock")
+    // public ResponseEntity<ElasticProduct> updateStock(@PathVariable String id, @RequestParam int stock) {
+    //     ElasticProduct product = service.updateStock(id, stock);
+
+    //     if (product == null) {
+    //         return ResponseEntity.noContent().build();
+    //     }
+
+    //     return ResponseEntity.ok(product);
+    // }
 
 }

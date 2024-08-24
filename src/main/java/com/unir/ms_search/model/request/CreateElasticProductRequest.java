@@ -17,5 +17,6 @@ public class CreateElasticProductRequest {
     private String brand;
     private String model;
     private Double price;
+    private String supplier;
     private Integer stock;
 }

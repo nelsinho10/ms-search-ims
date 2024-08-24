@@ -47,6 +47,9 @@ public class ElasticProduct {
     @Field(type = FieldType.Integer, name = "stock")
     private Integer stock;
 
+    @Field(type = FieldType.Keyword, name = "supplier")
+    private String supplier;
+
     @Field(type = FieldType.Boolean, name = "enabled")
     private Boolean enabled;
 

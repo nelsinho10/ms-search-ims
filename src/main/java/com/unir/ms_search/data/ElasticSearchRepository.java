@@ -33,6 +33,17 @@ public class ElasticSearchRepository {
         return productRepository.save(product);
     }
 
+    public ElasticProduct getProductById(String productId) {
+        ElasticProduct product = productRepository.findById(productId);
+
+        if (product == null) {
+            throw new IllegalArgumentException("Product not found");
+        }
+
+        return product;
+
+    }
+
     public List<ElasticProduct> searchProductsByName(String namePart) {
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 

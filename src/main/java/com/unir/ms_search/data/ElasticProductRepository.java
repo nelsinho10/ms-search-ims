@@ -13,4 +13,5 @@ public interface ElasticProductRepository extends ElasticsearchRepository<Elasti
     List<ElasticProduct> findByBrand(String brand);
     List<ElasticProduct> findByEnabled(Boolean enabled);
     ElasticProduct save(ElasticProduct product);
+    ElasticProduct findById(String id);
 }
