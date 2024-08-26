@@ -70,15 +70,15 @@ public class ElasticProductController {
         return ResponseEntity.ok(product);
     }
 
-    // @PatchMapping("/elastic/products/{id}/stock")
-    // public ResponseEntity<ElasticProduct> updateStock(@PathVariable String id, @RequestParam int stock) {
-    //     ElasticProduct product = service.updateStock(id, stock);
+    @GetMapping("/elastic/products/search")
+    public ResponseEntity<List<ElasticProduct>> searchProductsByName(@RequestParam String productName) {
+        List<ElasticProduct> products = service.searchProductsByName(productName);
 
-    //     if (product == null) {
-    //         return ResponseEntity.noContent().build();
-    //     }
+        if (products.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
 
-    //     return ResponseEntity.ok(product);
-    // }
+        return ResponseEntity.ok(products);
+    }
 
 }

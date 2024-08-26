@@ -3,7 +3,6 @@ package com.unir.ms_search.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.elasticsearch.common.recycler.Recycler.C;
 import org.springframework.stereotype.Service;
 
 import com.unir.ms_search.controller.CreateStockController;
@@ -50,7 +49,7 @@ public class ElasticProductsServiceImpl implements ElasticProductsService {
 
         List<ElasticProduct> products = new ArrayList<>();
 
-       // Iterate over the request array
+        // Iterate over the request array
         for (CreateStockController pr : request) {
             // Get the product by id
             ElasticProduct product = repository.getProductById(pr.getProductId());
@@ -63,44 +62,13 @@ public class ElasticProductsServiceImpl implements ElasticProductsService {
     }
 
     @Override
-    public ElasticProduct getProductByName(String productName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductByName'");
-    }
-
-    @Override
     public List<ElasticProduct> getProducts() {
         return repository.getProducts();
     }
 
     @Override
-    public List<ElasticProduct> getProductsByCategory(String category) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductsByCategory'");
-    }
-
-    @Override
-    public List<ElasticProduct> getProductsByBrand(String brand) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductsByBrand'");
-    }
-
-    @Override
-    public List<ElasticProduct> getProductsByModel(String model) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProductsByModel'");
-    }
-
-    @Override
     public List<ElasticProduct> searchProductsByName(String productName) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchProductsByName'");
-    }
-
-    @Override
-    public List<ElasticProduct> searchProductsByDescription(String description) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchProductsByDescription'");
+        return repository.searchProductsByName(productName);
     }
 
 }
